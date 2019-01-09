@@ -1,2 +1,2 @@
-# -Vinger-C-
+# Ævinger-C-
 Øvinger i C++
