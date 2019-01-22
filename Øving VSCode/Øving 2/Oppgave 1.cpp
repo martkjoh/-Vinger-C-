@@ -143,7 +143,7 @@ vector<double> calculateAnnuity(double totaltLan, double rente, double avdrag)
 	vector<double> innbetalinger;
 	for (double i = 0; i < avdrag; i++)
 	{
-		double innbetaling = totaltLan * (rente / 100) / (1 - pow(1 + rente / 100, -avdrag));
+		double innbetaling = totaltLan * (rente / 100.0) / (1 - pow(1 + rente / 100, -avdrag));
 		innbetalinger.push_back(innbetaling);
 	}
 	return innbetalinger;
