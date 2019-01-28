@@ -1,5 +1,4 @@
-#include "utilities.h"
-
+#include "test.h"
 
 int main()
 {
@@ -7,7 +6,20 @@ int main()
     //
     //1 a) 25
 
-    testCallByValue();
-    testByCallByRefrence();
+    // testCallByValue();
+    // testByCallByRefrence();
+
+    seedRandom();
+    // testVecotrSorting();    
+
+    // testString();
+
+    // testReadInputToString();
+
+    // cout << checkPosition("ABEA", "abed");
+    // cout << checkPosition("aaaa", "abca") << endl;
+    
+    playMastermind();
+
     return 0;
 }

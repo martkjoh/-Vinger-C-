@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../grafikk/GUI.h" // for Simple_window only (doesn't really belong in Window.h)
+#include "..//grafikk//GUI.h" // for Simple_window only (doesn't really belong in Window.h)
 
 using namespace Graph_lib;
 

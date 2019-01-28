@@ -3,7 +3,7 @@
 
 #include "..//grafikk//fltk.h"
 
-#include "std_lib_facilities.h"
+#include "..//std_lib_facilities.h"
 
 #include "Point.h"
 // #include "GUI.h"
