@@ -101,32 +101,45 @@ void playMastermindText()
 void playMastermindGraphics()
 {
 
-    constexpr int size = 4;
-    constexpr int letters = 6;
-    int tries = 0;
-    int numOftries = 10;
-    string code = randomizeString(size, 'A', 'A' + letters - 1);
-    while (true)
-    {
-        string guess = readInputToString(size, 'A', 'A' + letters - 1);
-        int correctPosistion = checkPosition(code, guess);
-        int correctCharacter = checkCharacters(code, guess);
-        if (correctPosistion < size)
-        {
-            cout << "Feil, prøv igjen! Du hadde " << correctCharacter << " riktig(e) karakter(er), " 
-            << "hvorav " << correctPosistion << " var på riktig posisjon." << endl;
-        } 
-        else
-        {
-            cout << "Riktig! Koden var " << code << endl;
-            break;
-        }
-        if (tries == numOftries) 
-        {
-            cout << "Beklager, du gikk tom for forsøk. Koden var " << code << endl;
-            break;
-        }
-        tries++;
-        cout << "Du har " << numOftries - tries << " forsøk igjen" << endl << endl; 
-    }
+	constexpr int size = 4;
+	constexpr int letters = 6;
+	int tries = 0;
+	int numOfTries = 10;
+	int win_w = 400;
+	int win_h = 600;
+	string code = randomizeString(size, 'A', 'A' + letters - 1);
+	MastermindWindow mwin{ Point{1920-400, 0}, win_w, win_h, "Mastermind" };
+	addGuess(mwin, code, size, 'A', 0);
+	hideCode(mwin, size);
+	mwin.wait_for_button();
+	while (true)
+	{
+		string guess = readInputToString(size, 'A', 'A' + letters - 1);
+		addGuess(mwin, guess, size, 'A', tries + 1);
+		cout << guess << endl;	
+		int correctPosistion = checkPosition(code, guess);
+		int correctCharacter = checkCharacters(code, guess);
+		tries++;
+		if (correctPosistion == size)
+		{
+			cout << "Riktig! Koden var " << code << endl;
+			break;
+		}
+		else if (tries < numOfTries)
+		{
+			cout << "Feil, prøv igjen! Du hadde " << correctCharacter << " riktig(e) karakter(er), "
+				<< "hvorav " << correctPosistion << " var på riktig posisjon." << endl;
+			addFeedback(mwin, correctPosistion, size - correctPosistion, size, tries);
+		}
+		else
+		{
+			cout << "Beklager, du gikk tom for forsøk. Koden var " << code << endl;
+			hideCode(mwin, size);
+			mwin.wait_for_button();
+			break;
+		}
+		cout << "Du har " << numOfTries - tries << " forsøk igjen" << endl << endl;
+		mwin.wait_for_button();
+	}
+	mwin.wait_for_button();
 }

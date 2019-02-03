@@ -4,22 +4,21 @@
     "version": "2.0.0",
     "tasks": [
         {
-            
             "label": "Run",
             "type": "shell",
             "command": "\"\"${fileDirname}\\${fileBasenameNoExtension}.exe\"\"",
-            "dependsOn": ["Compile"],
-            "group": 
-            {
+            "dependsOn": [
+                "Compile"
+            ],
+            "group": {
                 "kind": "build",
                 "isDefault": true
-            },
+            }
         },
         {
             "label": "Compile",
             "type": "shell",
-            "command": "cd \"${fileDirname}\" && g++ *.cpp -o \"${fileBasenameNoExtension}\"",
-        },
-
+            "command": "cd \"${fileDirname}\" && g++ *.cpp -lfltk -o \"${fileBasenameNoExtension}\""
+        }
     ]
 }

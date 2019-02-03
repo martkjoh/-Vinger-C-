@@ -19,7 +19,7 @@ int main()
     // cout << checkPosition("ABEA", "abed");
     // cout << checkPosition("aaaa", "abca") << endl;
     
-    playMastermind();
+    playMastermindGraphics();
 
     return 0;
 }

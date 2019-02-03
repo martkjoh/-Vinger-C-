@@ -1,5 +1,4 @@
 #include "cannonball.h"
-#include "utilities.h"
 
 
 double acclY()
@@ -130,6 +129,7 @@ void playTargetPractice()
         else cout << "langt." << endl;
         cout << "Tid ballen var i luftn: ";
         printTime(flightTime(velY));
+        cout << "Bommet med: " << missedBy << endl;
 
         if (tries == 10)
         {

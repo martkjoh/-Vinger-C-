@@ -1,6 +1,7 @@
-// #pragma once
+#pragma once
 
-#include "..//grafikk//Simple_window.h"
+#include "../grafikk/Simple_window.h"
+
 
 // Storing game's gui data
 
@@ -10,7 +11,7 @@ struct MastermindWindow : Simple_window
 	MastermindWindow(Point xy, int w, int h, const string& title) : Simple_window(xy, w, h, title) {};
 	
     // storing rectangles for code and guesses
-    Vector_ref<Rectangle> vr;
+    Vector_ref<Graph_lib::Rectangle> vr;
     // storing feedback-pins as circles 
 	Vector_ref<Circle> vc;	
 };

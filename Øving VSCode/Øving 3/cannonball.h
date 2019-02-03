@@ -2,6 +2,8 @@
 #include <iostream> // cout/cin
 #include <cmath>    // cos/sin
 #include <iomanip>  // setw
+#include <locale>
+#include "utilities.h"
 
 using namespace::std;
 
