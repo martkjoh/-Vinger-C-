@@ -1,4 +1,5 @@
 #include <iostream>
+#include <FL/Fl.H>
 #include <C:/Program Files/fltk-1.3.2/FL/Fl.H>
 #include <C:/Program Files/fltk-1.3.2/FL/Fl_Window.H>
 #include <C:/Program Files/fltk-1.3.2/FL/Fl_Box.H>

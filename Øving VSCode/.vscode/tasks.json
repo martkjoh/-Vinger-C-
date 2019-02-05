@@ -3,7 +3,26 @@
     // for the documentation about the tasks.json format
     "version": "2.0.0",
     "tasks": [
-        {
+        // {
+        //     "label": "Lauch",
+        //     "type": "shell",
+        //     "command":"cd \"${fileDirname}\" && cl *.cpp \"${fileBasenameNoExtension}\"",
+        //     "dependsOn": ["Compile"],
+        // },
+        
+        // {
+        //     "label": "Compile",
+        //     "type": "shell",
+        //     "command":  "\"\"C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Auxiliary\\Build\\vcvars64.bat\"\" && cl /EHsc *.cpp",
+        //     "group":
+        //     {
+        //         "kind": "build",
+        //         "isDefault": true
+        //     },
+
+        // },
+                
+        { 
             "label": "Run",
             "type": "shell",
             "command": "\"\"${fileDirname}\\${fileBasenameNoExtension}.exe\"\"",
@@ -18,7 +37,8 @@
         {
             "label": "Compile",
             "type": "shell",
-            "command": "cd \"${fileDirname}\" && g++ *.cpp -lfltk -o \"${fileBasenameNoExtension}\""
+            "command": "cd \"${fileDirname}\" && vcvars64 && cl /Fe${fileBasenameNoExtension} /EHsc *.cpp"
         }
+    
     ]
 }
