@@ -2,6 +2,9 @@
 #include <vector>
 #include "utilities.h"
 
+// En kortsokk med 52 kort. Trekker du et kort, inkrementeres indeksen. Trekkes hele bonken, stokkes den
+// Når stokken stokkes, blir indeksen satt til 0
+
 class CardDeck
 {
     private:

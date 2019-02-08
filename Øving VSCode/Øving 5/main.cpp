@@ -1,14 +1,19 @@
-#include "CardDeck.h"
+#include "Blackjack.h"
 #include "utilities.h"
 
 int main()
 {
-    // seedRandom();
+    seedRandom();
 
     CardDeck deck{};
     deck.shuffle();
-    deck.print();
-
+    Hand player{deck};
+    player.drawCard(deck);
+    player.drawCard(deck);
+    player.printHand();
+    cout << player.getValue() << endl;
+    cout << player.getTrueBlackjack() << endl;
+    cout << endl;
     // Blackjack game{};
     
     // cout << "The dealers first card is " << game.showCardDealer() << endl;

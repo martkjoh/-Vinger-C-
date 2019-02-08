@@ -1,6 +1,10 @@
 #include "Card.h"
 
+
+// Card
+
 Card::Card(): valid{true} {}
+
 Card::Card(Rank r, Suit s): r{r}, s{s}, valid{true} {}
 
 Rank Card::rank() 
@@ -35,6 +39,9 @@ string Card::toStringShort()
     char suit = (suitToString(s))[0];
     return rank + suit;
 }
+
+
+// Funksjoner
 
 string suitToString(Suit suit)
 {

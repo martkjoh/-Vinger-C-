@@ -4,15 +4,23 @@
 
 using namespace::std;
 
+// Ranken til et spillkort
+
 enum class Rank
 {
     two = 2, three, four, five, six, seven, eight, nine, ten, jack, queen, king, ace
 };
 
+
+// Typen til et spillkort
+
 enum class Suit
 {
     clubs, diamonds, hearts, spades
 };
+
+
+// Brukes ikke, for en oppgave
 
 struct CardStruct
 {
@@ -20,8 +28,16 @@ struct CardStruct
     Rank r;
 };
 
+
+// Et spillkortmed rank og suit. Constructer uten argumenter returnerert et invalid kort
+
 class Card
 {
+    private:
+        Rank r;
+        Suit s;
+        bool valid;
+    
     public:
         Card();
         Card(Rank r, Suit s);
@@ -32,15 +48,6 @@ class Card
         bool isPicutre();
         string toString();
         string toStringShort();
-
-    private:
-        Rank r;
-        Suit s;
-        bool valid;
-
-        
-
-        
 };
 
 
