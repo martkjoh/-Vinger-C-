@@ -1,13 +1,13 @@
 #include <iostream>
 #include <string>
+#include <vector>
 
 using namespace::std;
 
 int main()
 {
-	int a = 1;
-	string b = to_string(a);
-	cout << b << endl;
+	cout << bool{0 || 0 || 0} << endl;
+	
 	return 0;
 }
 

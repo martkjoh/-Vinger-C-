@@ -4,7 +4,10 @@
         "iomanip": "cpp",
         "ctime": "cpp",
         "iostream": "cpp",
-        "type_traits": "cpp"
+        "type_traits": "cpp",
+        "xstring": "cpp",
+        "vector": "cpp",
+        "string": "cpp"
     },
     "C_Cpp.intelliSenseEngineFallback": "Enabled"
 }

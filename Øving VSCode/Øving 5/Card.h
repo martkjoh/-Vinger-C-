@@ -4,33 +4,50 @@
 
 using namespace::std;
 
-enum class Suit
-{
-    clubs, diamonds, hearts, spades
-};
-
 enum class Rank
 {
     two = 2, three, four, five, six, seven, eight, nine, ten, jack, queen, king, ace
 };
 
+enum class Suit
+{
+    clubs, diamonds, hearts, spades
+};
 
+struct CardStruct
+{
+    Suit s;
+    Rank r;
+};
 
 class Card
 {
-    private:
-        Suit s;
-        Rank r;
-        bool valid;
     public:
-        Card(Suit suit, Rank rank)
-        {
-            s = suit;
-            r = rank;
-        }
+        Card();
+        Card(Rank r, Suit s);
+        
+        Rank rank();
+        Suit suit();
+        bool isValid();
+        bool isPicutre();
+        string toString();
+        string toStringShort();
+
+    private:
+        Rank r;
+        Suit s;
+        bool valid;
+
+        
+
+        
 };
 
-class CardDeck
-{
 
-};
+string suitToString(Suit suit);
+
+string rankToString(Rank rank);
+
+string toString(CardStruct card);
+
+string toStringShort(CardStruct card);
