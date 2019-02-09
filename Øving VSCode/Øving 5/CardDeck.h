@@ -13,6 +13,7 @@ class CardDeck
 
     public:
         CardDeck();
+        CardDeck(bool shuffeled);
 
         Card drawCard();
         void swap(int a, int b);

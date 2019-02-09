@@ -2,12 +2,21 @@
 
 CardDeck::CardDeck(): currentCardIndex{0}
 {
-
     for(int i = 0; i < 4; i++)
     {
         for(int j = 2; j <= 14; j++)
         cards.push_back(Card::Card(Rank(j), Suit(i)));
     }
+}
+
+CardDeck::CardDeck(bool shuffeled): currentCardIndex{0}
+{
+    for(int i = 0; i < 4; i++)
+    {
+        for(int j = 2; j <= 14; j++)
+        cards.push_back(Card::Card(Rank(j), Suit(i)));
+    }
+    if (shuffeled) shuffle();
 }
 
 Card CardDeck::drawCard()
