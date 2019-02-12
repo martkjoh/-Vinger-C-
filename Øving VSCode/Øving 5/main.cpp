@@ -3,6 +3,9 @@
 
 int main()
 {
+
+    // Spørsmål
+    // Enum class: Forskjellen på å construct Rank{i} og Rank(i)
     seedRandom();
 
     Blackjack game{};
