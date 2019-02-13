@@ -1,0 +1,3 @@
+0	TDT4102	Prosedyre- og objektorientert programmering
+1	TFY4215	Inføring i kvantemekanikk
+2	TMA4245	Statistikk

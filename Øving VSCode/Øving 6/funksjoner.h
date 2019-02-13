@@ -2,6 +2,7 @@
 #include <iostream>     // standrad I/O, cout etc
 #include <stdexcept>    // raise exceptions
 #include <string>       // type string
+#include <sstream>      // type string strema
 #include <vector>       // type vector
 #include <map>          // type map
 
