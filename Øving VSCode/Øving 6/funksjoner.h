@@ -28,6 +28,22 @@ class Emne
 };
 
 
+class Temps
+{
+    public:
+
+        Temps(ifstream& file);
+
+        void readTemps(ifstream& file);
+
+        double max;
+        double min;
+
+    friend istream& operator>>(istream& is, Temps& t);
+    
+};
+
+
 void textToFile(string filePath);
 
 void copyFile(string filePath);

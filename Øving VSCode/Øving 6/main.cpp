@@ -9,11 +9,19 @@ int main()
     // fagplan.addCourse("TDT4102", "Prosedyre- og objektorientert programmering");
     // fagplan.saveData("fagplan.txt");
 
-    string filePath = "fagplan.txt"; 
-    Emne fagplan;
-    fagplan.importData(filePath);
+    string filePath = "temps.txt"; 
+    ifstream file{filePath};
+    vector<Temps> temps;
 
-    cout << fagplan;
+    while(file)
+    {
+        temps.push_back(Temps{file});
+    }
 
+    for (Temps temp: temps)
+    {
+        cout << temp.max << ", " << temp.min << endl;
+    }
+    
     return 0;
 }

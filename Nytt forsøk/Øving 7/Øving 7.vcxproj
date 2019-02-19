@@ -19,13 +19,16 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="b.cpp" />
-    <ClCompile Include="Øving 2.cpp" />
+    <ClCompile Include="Emoji.cpp" />
+    <ClCompile Include="main.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Emoji.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
-    <ProjectGuid>{9e6355ec-a6e3-4578-9efd-30e63dba81e0}</ProjectGuid>
-    <RootNamespace>Øvinger</RootNamespace>
+    <ProjectGuid>{413ea639-891c-410e-bdd3-0f42aaecbca0}</ProjectGuid>
+    <RootNamespace>Øving_7</RootNamespace>
     <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -74,16 +77,20 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>C:\Program Files\TDT4102\includes;$(IncludePath)</IncludePath>
+    <IncludePath>C:\Program Files\TDT4102\includes;$(ProjectDir);C:\Program Files\TDT4102\Graph_lib\Graph;$(VCInstallDir);C:\Program Files\TDT4102\FLTK_1.3.4-2;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Program Files\TDT4102\Graph_lib\lib32;C:\Program Files\TDT4102\FLTK_1.3.4-2\lib32;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <IncludePath>C:\Program Files\TDT4102\includes;$(IncludePath)</IncludePath>
+    <IncludePath>C:\Program Files\TDT4102\includes;$(ProjectDir);C:\Program Files\TDT4102\Graph_lib\Graph;$(VCInstallDir);C:\Program Files\TDT4102\FLTK_1.3.4-2;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Program Files\TDT4102\Graph_lib\lib32;C:\Program Files\TDT4102\FLTK_1.3.4-2\lib32;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>C:\Program Files\TDT4102\includes;$(IncludePath)</IncludePath>
+    <IncludePath>C:\Program Files\TDT4102\includes;$(ProjectDir);C:\Program Files\TDT4102\Graph_lib\Graph;$(VCInstallDir);C:\Program Files\TDT4102\FLTK_1.3.4-2;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Program Files\TDT4102\Graph_lib\lib64;C:\Program Files\TDT4102\FLTK_1.3.4-2\lib64;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <IncludePath>C:\Program Files\TDT4102\includes;$(IncludePath)</IncludePath>
+    <IncludePath>C:\Program Files\TDT4102\includes;$(ProjectDir);C:\Program Files\TDT4102\Graph_lib\Graph;$(VCInstallDir);C:\Program Files\TDT4102\FLTK_1.3.4-2;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Program Files\TDT4102\Graph_lib\lib64;C:\Program Files\TDT4102\FLTK_1.3.4-2\lib64;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -91,9 +98,12 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
+      <PreprocessorDefinitions>NOGDI;WIN32;_MBCS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
-      <SubSystem>Console</SubSystem>
+      <AdditionalDependencies>Graph_libd.lib;fltkd.lib;wsock32.lib;comctl32.lib;fltkjpegd.lib;fltkimagesd.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalOptions>/ignore:4099 %(AdditionalOptions)</AdditionalOptions>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -102,9 +112,12 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
+      <PreprocessorDefinitions>NOGDI;WIN32;_MBCS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
-      <SubSystem>Console</SubSystem>
+      <AdditionalDependencies>Graph_libd.lib;fltkd.lib;wsock32.lib;comctl32.lib;fltkjpegd.lib;fltkimagesd.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalOptions>/ignore:4099 %(AdditionalOptions)</AdditionalOptions>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -115,11 +128,14 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
+      <PreprocessorDefinitions>NOGDI;WIN32;_MBCS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <SubSystem>Console</SubSystem>
+      <AdditionalDependencies>Graph_lib.lib;fltk.lib;wsock32.lib;comctl32.lib;fltkjpeg.lib;fltkimages.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalOptions>/ignore:4099 %(AdditionalOptions)</AdditionalOptions>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -130,11 +146,14 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
+      <PreprocessorDefinitions>NOGDI;WIN32;_MBCS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <SubSystem>Console</SubSystem>
+      <AdditionalDependencies>Graph_lib.lib;fltk.lib;wsock32.lib;comctl32.lib;fltkjpeg.lib;fltkimages.lib;;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalOptions>/ignore:4099 %(AdditionalOptions)</AdditionalOptions>
     </Link>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

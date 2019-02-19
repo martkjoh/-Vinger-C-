@@ -68,9 +68,28 @@ void Emne::importData(string filePath)
 }
 
 
+// Temps
+
+istream& operator>>(istream& is, Temps& t)
+{
+    is >> t.max >> t.min;
+    return is;
+}
+
+Temps::Temps(ifstream& file)
+{
+    readTemps(file);
+}
+
+void Temps::readTemps(ifstream& file)
+{
+    file >> *this;
+}
+
+        
 // funksjoner
 
-void textToFile(string filePath)
+void textToFile(string& filePath)
 {
     ofstream file{filePath};
 
