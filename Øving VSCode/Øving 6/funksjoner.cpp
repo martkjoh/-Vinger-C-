@@ -1,6 +1,5 @@
 #include "funksjoner.h"
 
-
 //emne
 
 
@@ -13,6 +12,7 @@ ostream& operator<<(ostream& os, const Emne& emne)
 
     return os;
 }
+
 
 Emne::Emne(string key, string mapped)
 {
@@ -44,17 +44,52 @@ void Emne::saveData(string filePath)
 
 }
 
-void importData(string filePath)
-{
+void Emne::importData(string filePath)
+{    
     ifstream file{filePath};
-    if (!file) throw runtime_error("File path " + filePath + " invalid");
+    if (!file) 
+    {
+        cout << "File path " + filePath + " invalid" << endl;
+        throw runtime_error("1");
+    }
+
+    string temp;
+    string tempKey;
+    string tempMap;
+
+    while (getline(file, temp))
+    {
+        stringstream tempStream(temp);
+        getline(tempStream, tempKey, '\t');
+        getline(tempStream, tempMap, '\t');
+        emner[tempKey] = tempMap;
+    }
 
 }
 
 
+// Temps
+
+istream& operator>>(istream& is, Temps& t)
+{
+    is >> t.max >> t.min;
+    return is;
+}
+
+Temps::Temps(ifstream& file)
+{
+    readTemps(file);
+}
+
+void Temps::readTemps(ifstream& file)
+{
+    file >> *this;
+}
+
+        
 // funksjoner
 
-void textToFile(string filePath)
+void textToFile(string& filePath)
 {
     ofstream file{filePath};
 
@@ -72,7 +107,11 @@ void textToFile(string filePath)
 void copyFile(string filePath)
 {
     ifstream file{filePath};
-    if (!file) throw runtime_error("File path " + filePath + " invalid");
+    if (!file) 
+    {
+        cout << "File path " + filePath + " invalid" << endl;
+        throw runtime_error("1");
+    }
 
     ofstream fileCopy{"copyOf_" + filePath};
     string temp;

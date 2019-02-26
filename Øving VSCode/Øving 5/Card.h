@@ -9,7 +9,7 @@ using namespace::std;
 enum class Rank
 {
     two = 2, three, four, five, six, seven, eight, nine, ten, jack, queen, king, ace
-};
+};  
 
 
 // Typen til et spillkort
