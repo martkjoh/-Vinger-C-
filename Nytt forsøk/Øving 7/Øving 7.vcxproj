@@ -24,6 +24,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Emoji.h" />
+    <ClInclude Include="Graph_lib.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>

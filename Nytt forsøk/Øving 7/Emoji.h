@@ -2,6 +2,19 @@
 
 #include "Graph.h"
 #include "GUI.h"
+#include "Graph_lib.h"
+
+
+constexpr int xmax = 1000;
+constexpr int ymax = 600;
+constexpr int R = ymax / 6;
+
+
+enum class Mood
+{
+	neutral, happy, sad, angry, suprised
+};
+
 
 using namespace Graph_lib;
 
@@ -36,7 +49,6 @@ protected:
 class Face : public Emoji
 {
 	private:
-		Point centre;
 		Circle base;
 
 	protected:
@@ -57,17 +69,16 @@ class EmptyFace : public Face
 		Circle lEyeOpen;
 		Arc lEyeClosed;
 		Circle rEye;
+		Line* lEyebrow;
+		Line* rEyebrow;
+		Mood mood;
+		Shape* mouth;
 		bool whink;
-		
-	public:
-		EmptyFace(Point c, int r, bool whink);
 
 	public:
+		EmptyFace(Point c, int r);
+
 		void attachTo(Graph_lib::Window& win) override;
-};
-
-
-enum calss Mood
-{
-	happy, sad, angry, suprised
+		void setMood(Mood m);
+		void setWhink(bool w);
 };
