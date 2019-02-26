@@ -4,10 +4,15 @@
 
 using namespace::std;
 
+void test(int *test)
+{
+	cout << *test * *test << endl;
+}
+
 int main()
 {
-	cout << bool{0 || 0 || 0} << endl;
-	
+	int a = 2;
+	test(&a);
 	return 0;
 }
 
