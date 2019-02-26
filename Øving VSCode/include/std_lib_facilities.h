@@ -21,6 +21,9 @@
    C++11: <chrono> Revised November 28 2013: add a few container algorithms
 	Revised June 8 2014: added #ifndef to workaround Microsoft C++11
    weakness
+
+   Revised for TDT4102, NTNU, 21 December 2018:
+   more std libs included.
 */
 
 #ifndef H112
@@ -60,53 +63,26 @@ typedef long Unicode;
 
 using namespace std;
 
-template <class T>
-string to_string(const T& t)
+template <class T> string to_string(const T& t)
 {
 	ostringstream os;
 	os << t;
 	return os.str();
 }
 
-struct Range_error : out_of_range { // enhanced vector range error reporting
+struct Range_error : out_of_range
+{ // enhanced vector range error reporting
 	int index;
-	Range_error(int i)
-		: out_of_range("Range error: " + to_string(i)), index(i)
-	{
-	}
+	Range_error(int i) : out_of_range("Range error: " + to_string(i)), index(i)
+	{}
 };
 
-
 // trivially range-checked vector (no iterator checking):
-template <class T>
-struct Vector : public std::vector<T> {
+template <class T> struct Vector : public std::vector<T>
+{
 	using size_type = typename std::vector<T>::size_type;
 
-#ifdef _MSC_VER
-	// microsoft doesn't yet support C++11 inheriting constructors
-	Vector()
-	{
-	}
-	explicit Vector(size_type n)
-		: std::vector<T>(n)
-	{
-	}
-	Vector(size_type n, const T& v)
-		: std::vector<T>(n, v)
-	{
-	}
-	template <class I>
-	Vector(I first, I last)
-		: std::vector<T>(first, last)
-	{
-	}
-	Vector(initializer_list<T> list)
-		: std::vector<T>(list)
-	{
-	}
-#else
 	using std::vector<T>::vector; // inheriting constructor
-#endif
 
 	T& operator[](unsigned int i) // rather than return at(i);
 	{
@@ -126,7 +102,8 @@ struct Vector : public std::vector<T> {
 #define vector Vector
 
 // trivially range-checked string (no iterator checking):
-struct String : std::string {
+struct String : std::string
+{
 	using size_type = std::string::size_type;
 	//	using string::string;
 
@@ -145,11 +122,10 @@ struct String : std::string {
 	}
 };
 
-
 namespace std {
 
-template <>
-struct hash<String> {
+template <> struct hash<String>
+{
 	size_t operator()(const String& s) const
 	{
 		return hash<std::string>()(s);
@@ -158,12 +134,10 @@ struct hash<String> {
 
 } // namespace std
 
-
-struct Exit : runtime_error {
-	Exit()
-		: runtime_error("Exit")
-	{
-	}
+struct Exit : runtime_error
+{
+	Exit() : runtime_error("Exit")
+	{}
 };
 
 // error() simply disguises throws:
@@ -185,14 +159,12 @@ inline void error(const string& s, int i)
 }
 
 
-template <class T>
-char* as_bytes(T& i) // needed for binary I/O
+template <class T> char* as_bytes(T& i) // needed for binary I/O
 {
 	void* addr = &i;				 // get the address of the first byte
 									 // of memory used to store the object
 	return static_cast<char*>(addr); // treat that memory as bytes
 }
-
 
 inline void keep_window_open()
 {
@@ -218,7 +190,6 @@ inline void keep_window_open(string s)
 	}
 }
 
-
 // error function to be used (only) until error() is introduced in Chapter 5:
 inline void simple_error(string s) // write ``error: s and exit program
 {
@@ -231,10 +202,8 @@ inline void simple_error(string s) // write ``error: s and exit program
 #undef min
 #undef max
 
-
-// run-time checked narrowing cast (type conversion). See ???.
-template <class R, class A>
-R narrow_cast(const A& a)
+// run-time checked narrowing cast (type conversion).
+template <class R, class A> R narrow_cast(const A& a)
 {
 	R r = R(a);
 	if (A(r) != a)
@@ -246,8 +215,8 @@ R narrow_cast(const A& a)
 inline int randint(int min, int max)
 {
 	auto seed = std::chrono::system_clock::now().time_since_epoch().count();
-	static default_random_engine ran{ static_cast<unsigned int>(seed) };
-	return uniform_int_distribution<>{ min, max }(ran);
+	static default_random_engine ran{static_cast<unsigned int>(seed)};
+	return uniform_int_distribution<>{min, max}(ran);
 }
 
 inline int randint(int max)
@@ -255,16 +224,11 @@ inline int randint(int max)
 	return randint(0, max);
 }
 
-// inline double sqrt(int x) { return sqrt(double(x)); }	// to match
-// C++0x
-
 // container algorithms. See 21.9.
 
-template <typename C>
-using Value_type = typename C::value_type;
+template <typename C> using Value_type = typename C::value_type;
 
-template <typename C>
-using Iterator = typename C::iterator;
+template <typename C> using Iterator = typename C::iterator;
 
 template <typename C>
 // requires Container<C>()

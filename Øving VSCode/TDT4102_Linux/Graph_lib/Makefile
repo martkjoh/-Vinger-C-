@@ -8,7 +8,7 @@ CXXFLAGS += $(shell fltk-config --use-gl --use-images --cxxflags)
 LDFLAGS  += $(shell fltk-config --use-gl --use-images --ldflags)
 LDSTATIC = $(shell fltk-config --use-gl --use-images --ldstaticflags)
 
-SOURCES = Graph.cpp GUI.cpp Window.cpp Graph_lib.cpp
+SOURCES = Graph.cpp GUI.cpp Window.cpp
 OBJECTS := $(SOURCES:.cpp=.o)
 STATIC_LIB = Graph_lib.a
 
