@@ -1,4 +1,4 @@
-EXECUTABLE = example # programnavn
+EXECUTABLE = cars # programnavn
 
 INCLUDE_DIR = ../include
 GRAPH_LIB_DIR = ../Graph_lib
