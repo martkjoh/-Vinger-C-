@@ -14,5 +14,8 @@ int main()
     lynet.reserveFreeSeat();
     cout << Ola;
     cout << Frank;
+
+    Meeting meeting{1, 12, 14, Meeting::Campus::Gløshaugen, "Campusutvikling", &Ola};
+    
     return 0;
 }
