@@ -29,7 +29,7 @@ int main()
     Meeting BN{1, 11, 14, Meeting::Campus::Gløshaugen, "Møte i BN", &Martin};
     BN.addParticipants(&Lise);
     BN.addParticipants(&Hans);
-    
+
     cout << campus << endl;
 
     vector<const Person*> coDriving = campus.findPotentialCoDriving();

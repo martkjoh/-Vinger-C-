@@ -1,4 +1,4 @@
-EXECUTABLE = cars # programnavn
+EXECUTABLE = meetings # programnavn
 
 INCLUDE_DIR = ../include
 GRAPH_LIB_DIR = ../Graph_lib
