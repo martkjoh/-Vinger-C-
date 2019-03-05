@@ -24,3 +24,13 @@ ostream& operator << (ostream& os, const Person& p)
     
     return os;
 }
+
+Person::Person(string n, string e, Car* c): name{n}, email{e}, car{c} {}
+
+string Person::getName() const {return name;}
+
+string Person::getEmail() const {return email;}
+
+void Person::setEmail(string e) {email = e;}
+
+bool Person::hasFreeSeats() const {return car && car->hasFreeSeats();}
