@@ -4,18 +4,30 @@ int main()
 {
     cout << endl;
 
-    Person Ola{"Ola Normann", "xxXXolaXXxx@hotmail.com"};
     Car lynet{1};
-    Person Frank{"Frank Nilsen", "franknilsen@gmail.com", &lynet};
-    cout << Ola;
-    cout << Frank;
-    
-    Ola.setEmail("memelord@yahoo.com");
-    lynet.reserveFreeSeat();
-    cout << Ola;
-    cout << Frank;
+    Car boble{3};
+    Car Tesla{4};
+    Car CBR125{1};
 
-    Meeting meeting{1, 12, 14, Meeting::Campus::Gløshaugen, "Campusutvikling", &Ola};
+    Person Ola{"Ola Normann", "xxXXolaXXxx@hotmail.com"};
+    Person Frank{"Frank Nilsen", "franknilsen@gmail.com", &lynet};
+    Person Martin{"Martin Johnsrud", "martkjoh@stud.ntnu.no", &Tesla};
+    Person Lise{"Lise Nilsen", "lise@gmail.com", &CBR125};
+    Person Hans{"Hans Giil", "hansgii@gmail.com", &boble};
     
+    CBR125.reserveFreeSeat();
+
+    Meeting campus{1, 12, 14, Meeting::Campus::Gløshaugen, "Campusutvikling", &Ola};
+    campus.addParticipants(&Frank);
+    
+    Meeting BN{1, 11, 14, Meeting::Campus::Gløshaugen, "Møte i BN", &Martin};
+    BN.addParticipants(&Lise);
+    BN.addParticipants(&Hans);
+
+    vector<const Person*> coDriving = campus.findPotentialCoDriving();
+    for (const Person* p : coDriving)
+    {
+        cout << *p;
+    }
     return 0;
 }

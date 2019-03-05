@@ -4,9 +4,10 @@
 #include <set>
 #include <vector>
 #include <iomanip>
-
+#include <cstdlib>
 
 using namespace::std;
+
 
 // A Car is an object with an amount of free seats, which can bee reserved
 
@@ -44,6 +45,7 @@ class Person
         friend ostream& operator<<(ostream& os, const Person& p);
 };
 
+
 // A Meeting is a class containing the location
 
 class Meeting
@@ -57,10 +59,11 @@ class Meeting
         int getDay() const;
         int getStartTime() const;
         int getEndTime() const;
-        Campus getLocation() const;
+        string getLocation() const;
         string getLeader() const;
         string getSubject() const;
         vector<string> getParticipants() const;
+        vector<const Person*> findPotentialCoDriving() const;
         void addParticipants(Person* p);
 
     private:
@@ -72,4 +75,11 @@ class Meeting
         const Person* leader;
         set<const Person*> participants;
         static set<const Meeting*> meetings;
-}
+
+        // Må lage destruktør
+};
+
+
+// Operatorer
+
+ostream& operator << (ostream& os, const Meeting& m);
