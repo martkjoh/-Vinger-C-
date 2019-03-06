@@ -25,6 +25,7 @@ ostream& operator << (ostream& os, const Person& p)
     return os;
 }
 
+
 Person::Person(string n, string e, Car* c): name{n}, email{e}, car{c} {}
 
 string Person::getName() const {return name;}

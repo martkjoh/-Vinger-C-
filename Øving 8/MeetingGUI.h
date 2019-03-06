@@ -1,3 +1,5 @@
+#pragma once
+
 #include "Graph.h"
 #include "Window.h"
 #include "GUI.h"
