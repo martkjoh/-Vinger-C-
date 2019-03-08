@@ -1,4 +1,4 @@
-EXECUTABLE = example # programnavn
+EXECUTABLE = øving9 # programnavn
 
 INCLUDE_DIR = ../include
 GRAPH_LIB_DIR = ../Graph_lib
@@ -32,5 +32,5 @@ run: $(EXECUTABLE)
 
 .PHONY: clean
 clean:
-	$(RM) $(EXECUTABLE)
+#	$(RM) $(EXECUTABLE)
 	$(RM) $(OBJECTS)
