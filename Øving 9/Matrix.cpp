@@ -36,7 +36,6 @@ int Matrix::index(int i, int j) const
     {
         cout << "Invalid index" << endl;
     }
-
     return i * shape[1] + j;
 }
 

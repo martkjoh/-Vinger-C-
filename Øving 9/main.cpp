@@ -4,6 +4,8 @@
 
 int main()
 {
+
+    // createFib();
     // dummyTest();
 
     int a = 4;
@@ -34,9 +36,6 @@ int main()
     cout << m + n << endl;
     m += m + k;
     cout << m << endl;
-
-    Matrix l;
-
 
     return 0;
 }   
