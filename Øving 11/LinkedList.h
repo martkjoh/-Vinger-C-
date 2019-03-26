@@ -1,88 +1,136 @@
-// #pragma once
+#pragma once
 
 #include <memory>
 #include <ostream>
-#include <string>
 #include <iostream>
 
 using namespace::std;
 
-// test code 
-void testLinkedList();
 
-class Node 
-{
-    
+template <typename T> class Node 
+{   
     private:
-        const std::string value;    // The data held by the LinkedList
-        std::unique_ptr<Node> next; // unique_ptr to the next node
-        Node* prev;                 // raw (non-owning) ptr to the previous node
+        const T value;              
+        unique_ptr<Node <T>> next; 
+        Node<T>* prev;                 
     
     public:
         Node(): value{}, next{nullptr}, prev{nullptr} {}
-    
-        // construct a node with string value, a unique_ptr to the next node, 
-        // and a pointer to the previous node
-        Node(const std::string& value, std::unique_ptr<Node> next, Node* prev): 
+        Node(const T& value, unique_ptr<Node <T>> next, Node <T>* prev): 
             value{value}, next{move(next)}, prev{prev} {}
-
-        // We can use the default destructor, since unique_ptr takes care of deleting memory 
         ~Node() = default;
         
-        // return the value of the node
-        string getValue() const { return value; }
-        // return a raw (non-owning) pointer to the next node
-        Node* getNext() const { return next.get(); }
-        // return a raw (non-owning) pointer to the previous node
-        Node* getPrev() const { return prev; }
+        T getValue() const { return value; }
+        Node <T>* getNext() const { return next.get(); }
+        Node <T>* getPrev() const { return prev; }
 
-        // write the value of the node to the ostream
-        friend std::ostream & operator<<(std::ostream & os, const Node& node);
+        friend ostream& operator<<(ostream& os, const Node <T>& node)
+        {
+            os << node->getValue() << endl;
+            return os;
+        }
 
+        template <typename U> 
         friend class LinkedList;
 };
 
-class LinkedList {
-    private:
-        // ptr to the first node
-        std::unique_ptr<Node> head;
 
-        // a raw pointer to the last node, the last node is always a dummy node
-        // this is declared as a const ptr to a Node, so that tail never can
-        // point anywhere else
-        Node* const tail;
+template <typename T> class LinkedList 
+{
+    private:
+
+        unique_ptr<Node <T>> head;
+        Node <T>* const tail;
     
     public:
-        //create the dummy node, and make tail point to it
-        LinkedList(): head{std::make_unique<Node>()}, tail{head.get()} {}
+        LinkedList(): head{make_unique<Node <T>>()}, tail{head.get()} {}
         ~LinkedList() = default;
 
-        //if next is a nullptr (i.e. head is the dummy node), the list is emtpy
         bool isEmpty() const { return !head->next; }
+        Node <T>* begin() const { return head.get(); }
+        Node <T>* end() const { return tail; }
 
-        //return a pointer to first element
-        Node* begin() const { return head.get(); }
-        //return a pointer to beyond-end element
-        Node* end() const { return tail; }
 
-        // The insert function takes a pointer to node (pos) and a string (value). 
-        // It creates a new node which contains value. 
-        // The new node is inserted into the LinkedList BEFORE the node pointed to by pos.
-        Node* insert(Node *pos, const std::string& value);
 
-        // The find function traverses the linked list and returns a pointer to the first node
-        // that contains the value given.
-        // If the value isn't in the list, find returns a pointer to the dummy node at the end
-        // of the list.
-        Node* find(const std::string& value);
+        Node <T>* insert(Node <T>* pos, const T& value)
+        {
+            // Hvis value skal settes inn først, må next peke på det som nå er head
+            if (pos == head.get())
+            {
+                head = make_unique<Node <T>>(value, move(head), nullptr);
+                pos->prev = head.get();
+                return head.get();
+            }
 
-        // The remove function takes a pointer to a node, and removes the node from the list. 
-        // The function returns a pointer to the element after the removed node.
-        Node* remove(Node* pos);
+            // Setter pos til next i den nye noden, og det som er før pos før den nye noden
+            unique_ptr<Node <T>> newNode = make_unique<Node <T>>(value, move(pos->prev->next), pos->prev);
+
+            // Setter den nye noden inn etter elementet før pos
+            pos->prev->next = move(newNode);
+            
+            // setter inn den nye noden før pos 
+            pos->prev = pos->prev->next.get();
+            return pos->prev;
+        }
+
+        // Returnerer en pointer til Node med samme value som argumentet, eller tail hvis det ikke fins.
+        Node <T>* find(const T& value)
+        {
+            Node <T>* node = head.get();
+            while (node)
+            {
+                if (node->getValue() == value){return node;}
+                node = node->getNext();
+            }
+            return tail;
+        }
+
+        // Fjerner noden på pos, og returner pointer til neste node
+        Node <T>* remove(Node <T>* pos)
+        {
+            // Hvis head skal fjærnes, må next settes til head, og prev er nullptr.
+            if (pos == head.get())
+            {
+                head = move(pos->next);
+                head->prev = nullptr;
+                return head.get();
+            }
+
+            // Ellementet før pos må peke på det etter pos som neste element
+            pos->prev->next = move(pos->next);
+
+            // Ellementet etter pos må peke tilbake på det etter pos, pos ikke er sist
+            if (pos->next){pos->next->prev = pos->prev;}
+            return pos->next.get();
+        }
 
         // The remove function takes a string and removes the first node which contains the value.
-        void remove(const std::string& value);
-
-        // write a string representation of the list to the ostream
-        friend std::ostream & operator<<(std::ostream & os, const LinkedList& list);
+        void remove(const T& value)
+        {
+            remove(find(value));
+        }
+        
+        friend ostream& operator <<(ostream& os, const LinkedList <T>& list)
+        {
+            Node <T>* node = list.head.get();
+            while (node)
+            {
+                os << node->getValue() << endl;
+                node = node->getNext();
+            }
+            return os;
+        }
 };
+
+
+void testLinkedList()
+{
+    LinkedList <int> l;
+    l.insert(l.begin(), 1);
+    l.insert(l.end(), 2);
+    l.insert(l.end(), 5);
+    cout << l << endl;
+    l.insert(l.begin(), -3);
+    l.remove(2);
+    cout << l << endl;
+}
