@@ -24,3 +24,5 @@ class Person
 void insertPerson(list<Person> &l, const Person& p);
 
 void printPeopleList(list<Person> l);
+
+void testPerson();

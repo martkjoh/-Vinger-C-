@@ -44,5 +44,19 @@ void printPeopleList(list<Person> l)
     for(list<Person>::iterator itr = l.begin(); itr != l.end(); itr++)
     {
         itr->printPersonOfficial();
-    }    
+    }
+}
+
+void testPerson()
+{
+    Person a{"Martin", "Johnsrud"};
+    Person b{"Nils", "Hansen"};
+    Person c{"Frank", "Hansen"};
+    Person d{"Frøydis", "Hansen"};
+    list<Person> l;
+    insertPerson(l, a);
+    insertPerson(l, b);
+    insertPerson(l, c);
+    insertPerson(l, d);
+    printPeopleList(l);
 }

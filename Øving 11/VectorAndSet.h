@@ -42,3 +42,13 @@ void replaceElementSet(set<string> &words, string old, string replacement)
         break;
     }
 }
+
+void testVectorAndSet()
+{
+    vector<string> vec{"Dette", "er", "en", "test"};
+    set<string> sett{"Dette", "er", "også", "en", "test"};
+    replaceElementVec(vec, "en", "to");
+    printVec(vec);   
+    replaceElementSet(sett, "Dette", "Det der");
+    printSet(sett); 
+}
