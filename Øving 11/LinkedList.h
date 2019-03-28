@@ -113,7 +113,7 @@ template <typename T> class LinkedList
         friend ostream& operator <<(ostream& os, const LinkedList <T>& list)
         {
             Node <T>* node = list.head.get();
-            while (node)
+            while (node->getValue())
             {
                 os << node->getValue() << endl;
                 node = node->getNext();

@@ -7,7 +7,7 @@
 
 int main()
 {
-    testPerson();
+    testLinkedList();
     
     return 0;
 }

@@ -11,7 +11,7 @@ void replaceElementVec(vector<string> &vec, string old, string replacement)
     for (vector<string>::iterator itr = vec.begin(); itr < vec.end(); itr++)
     {
         if (*itr != old) {continue;}
-        itr = vec.erase(itr);
+        vec.erase(itr);
         vec.insert(itr, replacement);
     }
 }
