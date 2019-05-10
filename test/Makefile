@@ -1,4 +1,4 @@
-EXECUTABLE = øving12 # programnavn
+EXECUTABLE = test # programnavn
 
 INCLUDE_DIR = ../include
 GRAPH_LIB_DIR = ../Graph_lib
@@ -28,7 +28,7 @@ $(EXECUTABLE): $(OBJECTS)
 
 .PHONY: run
 run: $(EXECUTABLE)
-	./$(EXECUTABLE)	
+	./$(EXECUTABLE)
 
 .PHONY: clean
 clean:
